@@ -166,6 +166,310 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* ================= MOBILE NAVIGATION ================= */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 5%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+  }
+  
+  nav a {
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .hero {
+    padding: 120px 20px 60px;
+  }
+  
+  .hero h1 {
+    font-size: clamp(35px, 8vw, 60px);
+  }
+  
+  .hero h2 {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .about-section, .works-section, .services-section, .contact-section, .cta-section {
+    padding: 80px 20px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .service-card {
+    padding: 30px 20px;
+  }
+  
+  .contact-form {
+    gap: 15px;
+  }
+  
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 16px 18px;
+  }
+  
+  .cta-info {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .why-track, .works-track {
+    display: grid;
+    width: auto;
+    animation: none;
+  }
+  
+  .why-track {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .works-track {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ================= SMALLER MOBILE ================= */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  
+  nav {
+    padding: 20px 5%;
+    gap: 25px;
+  }
+  
+  nav > div:last-child {
+    gap: 25px;
+  }
+  
+  nav a {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+  
+  .hero {
+    padding: 100px 15px 50px;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  
+  .hero h2 {
+    font-size: 18px;
+    margin: 15px 0 20px;
+  }
+  
+  .hero p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+  
+  .about-section, .works-section, .services-section, .contact-section, .cta-section {
+    padding: 60px 15px;
+  }
+  
+  .about-heading {
+    font-size: 28px;
+  }
+  
+  .about-text {
+    font-size: 16px;
+  }
+  
+  .why-box {
+    padding: 30px 20px;
+  }
+  
+  .works-title, .services-title, .contact-title {
+    font-size: 11px;
+  }
+  
+  .works-subtitle, .services-subtitle, .contact-subtitle {
+    font-size: 16px;
+  }
+  
+  .services-grid {
+    gap: 20px;
+  }
+  
+  .service-card {
+    padding: 25px 18px;
+  }
+  
+  .service-card h4 {
+    font-size: 18px;
+  }
+  
+  .service-card p {
+    font-size: 14px;
+  }
+  
+  .contact-container {
+    max-width: 100%;
+  }
+  
+  .contact-form {
+    gap: 12px;
+  }
+  
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  
+  .send-btn {
+    padding: 16px;
+    font-size: 15px;
+  }
+  
+  .cta-section h2 {
+    font-size: 28px;
+  }
+  
+  .cta-section p {
+    font-size: 16px;
+  }
+  
+  .footer {
+    padding: 40px 15px 30px;
+  }
+  
+  .footer-content {
+    gap: 20px;
+  }
+  
+  .footer-links {
+    gap: 15px;
+  }
+  
+  .footer-links a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .footer-bottom {
+    font-size: 12px;
+  }
+  
+  .scroll-top {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+/* ================= VERY SMALL MOBILE ================= */
+@media (max-width: 480px) {
+  nav {
+    padding: 15px 5%;
+    gap: 20px;
+  }
+  
+  nav > div:last-child {
+    gap: 20px;
+  }
+  
+  nav a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .hero h2 {
+    font-size: 16px;
+  }
+  
+  .hero p {
+    font-size: 14px;
+  }
+  
+  .service-card {
+    padding: 20px 15px;
+  }
+  
+  .service-card h4 {
+    font-size: 16px;
+  }
+  
+  .service-card p {
+    font-size: 13px;
+  }
+  
+  .contact-form {
+    gap: 10px;
+  }
+  
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  
+  .send-btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+  
+  .cta-section h2 {
+    font-size: 24px;
+  }
+  
+  .footer-links a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
 /* ================= HERO ================= */
 .hero {
   min-height: 100vh;
