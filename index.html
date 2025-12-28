@@ -226,6 +226,7 @@ nav a:hover::after {
 
 .hero h1 span {
   background: linear-gradient(to right, #e0e0e0, #ffffff, #a0a0a0);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
@@ -269,20 +270,45 @@ nav a:hover::after {
   letter-spacing: 0.5px;
 }
 
-.btn-primary {
-  background: var(--white);
-  color: #000;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
+  /* BUTTON GLOW ANIMATION */
+  @keyframes buttonPulse {
+    0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 10px rgba(0, 200, 83, 0.4); }
+    100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+  }
 
-.btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
-}
+  .btn-primary {
+    background: var(--white);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: buttonPulse 3s infinite;
+  }
 
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* TILT EFFECT CSS */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+  }
+  
+  .tilt-content {
+    transform: translateZ(20px);
+  }
+
+  /* 3D POP FOR ICONS */
+  .service-card:hover span {
+    transform: translateZ(30px) scale(1.1);
+  }
+
+  /* MOBILE TWEAKS */
+  @media (hover: none) {
+    .tilt-card {
+      transform: none !important;
+    }
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--white);
 }
 
@@ -321,60 +347,6 @@ nav a:hover::after {
 }
 
 /* ========== THEME VARIABLES ========== */
-body.light {
-  background: var(--bg-light);
-  color: var(--text-light);
-}
-
-body.light section,
-body.light footer {
-  background: var(--bg-light) !important;
-}
-
-body.light .service-card,
-body.light .why-box,
-body.light .video-card,
-body.light .contact-form input,
-body.light .contact-form textarea,
-body.light .contact-form select {
-  background: var(--card-light);
-  color: var(--text-light);
-}
-
-/* TOGGLE BUTTON */
-.theme-toggle {
-  position: fixed;
-  right: 22px;
-  bottom: 90px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #00c853, #4caf50);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 0 30px rgba(0, 200, 83, 0.8);
-  z-index: 999;
-  transition: 0.4s;
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.theme-toggle:hover {
-  transform: rotate(180deg) scale(1.15);
-  box-shadow: 0 0 50px rgba(0, 200, 83, 1);
-}
-
-.theme-toggle::before {
-  content: '☀️';
-  transition: 0.4s;
-}
-
-body.light .theme-toggle::before {
-  content: '🌙';
-}
 
 .scroll-top {
   position: fixed;
@@ -546,6 +518,82 @@ body.light .theme-toggle::before {
   justify-content: center;
   gap: 20px;
 }
+/* ===== OUR WORKS ===== */
+.works-section {
+  padding: 80px 0;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.works-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.works-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.works-subtitle {
+  text-align: center;
+  color: #bbb;
+  margin-bottom: 50px;
+}
+
+.works-subtitle span {
+  color: #fff;
+}
+
+.works-wrapper {
+  overflow-x: auto;
+}
+
+.works-track {
+  display: flex;
+  gap: 20px;
+}
+
+/* VIDEO CARD */
+.video-card {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY ICON */
+.play-btn {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.video-card:hover .play-btn {
+  opacity: 1;
+}
+
+.play-btn::after {
+  content: "▶";
+  font-size: 50px;
+  color: #fff;
+}
 
 .arrow-btn {
   width: 60px;
@@ -618,6 +666,24 @@ body.light .theme-toggle::before {
   position: relative;
   transition: 0.4s;
   cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease both;
+}
+
+.video-card:nth-child(1) { animation-delay: 0.1s; }
+.video-card:nth-child(2) { animation-delay: 0.2s; }
+.video-card:nth-child(3) { animation-delay: 0.3s; }
+.video-card:nth-child(4) { animation-delay: 0.4s; }
+.video-card:nth-child(5) { animation-delay: 0.5s; }
+.video-card:nth-child(6) { animation-delay: 0.6s; }
+.video-card:nth-child(7) { animation-delay: 0.7s; }
+.video-card:nth-child(8) { animation-delay: 0.8s; }
+.video-card:nth-child(9) { animation-delay: 0.9s; }
+.video-card:nth-child(10) { animation-delay: 1.0s; }
+
+.video-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 40px rgba(0, 200, 83, 0.4);
 }
 
 .video-card img {
@@ -629,27 +695,6 @@ body.light .theme-toggle::before {
 
 .video-card:hover img {
   transform: scale(1.05); /* Zoom-on-Hover */
-}
-
-/* Overlay Transition */
-.video-card::after {
-  content: 'View Project';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 2;
-  font-size: 18px;
-}
-
-.video-card:hover::after {
-  opacity: 1;
 }
 
 /* Hide old play button styles in favor of overlay or keep subtle */
@@ -711,10 +756,10 @@ body.light .theme-toggle::before {
   opacity: 0.8;
 }
 
-/* GRID (Bento Grid) */
+  /* GRID (Bento Grid) */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Improved for mobile */
   gap: 30px;
 }
 
@@ -1052,6 +1097,20 @@ body.light .theme-toggle::before {
   }
 }
 
+/* TABLET */
+@media (max-width: 768px) and (min-width: 601px) {
+  .video-card {
+    min-width: 280px;
+    height: 200px;
+  }
+  .service-card {
+    padding: 30px 25px;
+  }
+  .why-box {
+    min-width: 250px;
+  }
+}
+
 /* INFINITE LOOP ANIMATIONS */
 @keyframes scrollLoop {
   0% { transform: translateX(0); }
@@ -1081,9 +1140,9 @@ body.light .theme-toggle::before {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-30px); }
 }
-@keyframes swapIn {
-  from { transform: rotateY(90deg) scale(0.8); opacity: 0; }
-  to { transform: rotateY(0) scale(1); opacity: 1; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* APPLY ANIMATIONS */
@@ -1098,19 +1157,56 @@ body.light .theme-toggle::before {
 .why-box:nth-child(3) { animation-delay: 0.6s; }
 .why-box:nth-child(4) { animation-delay: 0.8s; }
 
-/* WHITE MODE IMPROVEMENTS */
-body.light .service-card,
-body.light .why-box,
-body.light .video-card {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.05);
+/* ================= UPDATES & FIXES ================= */
+
+/* 1. LOGO COLORS */
+.logo .brand-green {
+  color: var(--green);
+  text-shadow: 0 0 20px rgba(0, 200, 83, 0.8);
 }
-body.light .why-box:hover,
-body.light .service-card:hover {
-  background: #ffffff;
-  box-shadow: 0 15px 40px rgba(0, 200, 83, 0.15);
-  transform: translateY(-10px) rotateX(5deg);
+.logo .brand-white {
+  color: var(--white);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* 2. DARK MODE DROPDOWN FIX */
+.form-group select option {
+  background-color: #111;
+  color: #fff;
+}
+
+/* 4. FOOTER IMPROVEMENTS */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(to top, #050505, #0a0a0a);
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  padding: 8px 20px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  font-weight: 500;
+  transition: 0.3s;
+  margin: 0;
+  border: 1px solid transparent;
+}
+
+.footer-links a:hover {
+  background: var(--green);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 200, 83, 0.4);
+  border-color: var(--green);
 }
 </style>
 </head>
@@ -1121,8 +1217,7 @@ body.light .service-card:hover {
   <div class="loader"></div>
 </div>
 
-<!-- THEME TOGGLE -->
-<div class="theme-toggle" onclick="toggleTheme()"></div>
+<!-- THEME TOGGLE REMOVED -->
 <!-- SCROLL TO TOP -->
 <div class="scroll-top" onclick="scrollToTop()">↑</div>
 
@@ -1130,7 +1225,7 @@ body.light .service-card:hover {
 <canvas id="canvas-bg"></canvas>
 
 <nav>
-  <div class="logo"><span>GoNex</span> Innovations</div>
+  <div class="logo"><span class="brand-green">GoNex</span> <span class="brand-white">Innovations</span></div>
   <div>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -1188,68 +1283,107 @@ body.light .service-card:hover {
     </div>
   </div>
 </section>
-
 <!-- ================= OUR WORKS ================= -->
 <section class="works-section" id="works">
   <div class="works-container" data-aos="fade-up">
+
     <h2 class="works-title" data-aos="fade-down">OUR WORKS</h2>
     <p class="works-subtitle" data-aos="fade-up">
       A glimpse of projects crafted with <span>creativity & performance</span>
     </p>
+
     <div class="works-wrapper">
-      <div class="works-track" id="worksTrack">
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_1')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg">
+      <div class="works-track">
+
+        <!-- CARD 1 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908089/IMG_2314_oft1p4.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_2')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg">
+        
+        <!-- CARD 2 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908072/IMG_0088_zwrmqj.mp4" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_3')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg">
+
+        <!-- CARD 3 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908069/IMG_2189_akomij.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_4')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_4/hqdefault.jpg">
+
+        <!-- CARD 4 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908069/IMG_3276_nf3tsb.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_5')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_5/hqdefault.jpg">
+
+        <!-- CARD 5 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908063/IMG_2554_rwlt0t.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_6')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_6/hqdefault.jpg">
+
+        <!-- CARD 6 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908057/IMG_3558_zyh5l6.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_7')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_7/hqdefault.jpg">
+
+        <!-- CARD 7 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908055/IMG_3368_sthxg6.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_8')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_8/hqdefault.jpg">
+
+        <!-- CARD 8 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908050/IMG_3137_tiebvx.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_9')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_9/hqdefault.jpg">
+
+        <!-- CARD 9 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908037/IMG_2295_xjfq2t.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
-        <div class="video-card" data-aos="zoom-in" onclick="playVideo(this,'https://www.youtube.com/embed/VIDEO_ID_10')">
-          <img src="https://img.youtube.com/vi/VIDEO_ID_10/hqdefault.jpg">
+
+        <!-- CARD 10 -->
+        <div class="video-card">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908027/IMG_3101_iuc12x.mov" type="video/mp4">
+          </video>
           <div class="play-btn"></div>
         </div>
+
       </div>
     </div>
   </div>
 </section>
+
 <!-- GOOGLE ICONS -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
 
-<!-- ================= CONTACT US ================= -->
-<section class="contact-section" id="contact">
-  <div class="contact-container" data-aos="fade-up">
-  </div>
-</section>
+<!-- Duplicate Contact Section Removed -->
 
 <!-- ================= OUR SERVICES ================= -->
 <section class="services-section" id="services">
@@ -1349,11 +1483,11 @@ body.light .service-card:hover {
 
     <h2 class="contact-title" data-aos="fade-down">CONTACT US</h2>
     <p class="contact-subtitle" data-aos="fade-up">
-      Letâ€™s discuss how <span>GoNex Innovations</span> can grow your brand
+      Let's discuss how <span>GoNex Innovations</span> can grow your brand
     </p>
 
     <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" data-aos="fade-up" data-aos-delay="200">
-      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      <input type="hidden" name="access_key" value="c4150a6f-dae2-4e21-8b7d-f15d7cee7496">
       <input type="hidden" name="subject" value="New Inquiry - GoNex Innovations">
       <input type="hidden" name="from_name" value="GoNex Innovations Website">
 
@@ -1406,7 +1540,7 @@ body.light .service-card:hover {
 
 <!-- ================= CTA ================= -->
 <section class="cta-section">
-  <h2>Letâ€™s Build Your <span>Digital Presence</span></h2>
+  <h2>Lets Build Your <span>Digital Presence</span></h2>
   <p>
     Partner with GoNex Innovations to turn your digital presence
     into measurable business growth.
@@ -1448,7 +1582,7 @@ body.light .service-card:hover {
   </div>
 
   <p class="footer-bottom">
-    Â© 2025 GoNex Innovations. All rights reserved.
+    © 2025 GoNex Innovations. All rights reserved.
   </p>
 </footer>
 
@@ -1511,9 +1645,7 @@ body.light .service-card:hover {
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-          // Theme adaptation
-          const isLight = document.body.classList.contains('light');
-          ctx.fillStyle = isLight ? '#00c853' : '#00c853';
+          ctx.fillStyle = '#00c853';
           ctx.fill();
         }
         update() {
@@ -1583,8 +1715,6 @@ body.light .service-card:hover {
             let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
             if (distance < (canvas.width / 7) * (canvas.height / 7)) {
               opacityValue = 1 - (distance / 20000);
-              const isLight = document.body.classList.contains('light');
-              // Lighter lines in light mode if needed, but green works for both
               ctx.strokeStyle = 'rgba(0, 200, 83,' + opacityValue + ')';
               ctx.lineWidth = 1;
               ctx.beginPath();
@@ -1604,7 +1734,7 @@ body.light .service-card:hover {
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
-    }, 2000);
+    }, 1000); // Reduced from 2000 to 1000 for faster loading
   });
 
 // SCROLL TO TOP
@@ -1657,32 +1787,76 @@ document.querySelectorAll('.animate-line').forEach(line => {
 
 // VIDEO PLAY
 function playVideo(card, url) {
-  // Extract Video ID to use in playlist param for looping
-  let videoId = '';
-  const parts = url.split('/');
-  videoId = parts[parts.length - 1];
-  
-  // Params: autoplay, mute, loop, no controls, playlist (for loop)
-  const params = `?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}&modestbranding=1`;
-  
-  card.innerHTML = `<iframe width="100%" height="100%" src="${url}${params}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-}
-
-// THEME TOGGLE
-function toggleTheme() {
-  document.body.classList.toggle("light");
+  if (url.includes('youtube') || url.includes('youtu.be')) {
+    // Extract Video ID to use in playlist param for looping
+    let videoId = '';
+    const parts = url.split('/');
+    videoId = parts[parts.length - 1];
+    
+    // Params: autoplay, mute, loop, no controls, playlist (for loop)
+    const params = `?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}&modestbranding=1`;
+    
+    card.innerHTML = `<iframe width="100%" height="100%" src="${url}${params}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  } else {
+    // Direct Video (Cloudinary/MP4/MOV)
+    card.innerHTML = `
+      <video width="100%" height="100%" controls autoplay style="object-fit: cover; border-radius: 24px;">
+        <source src="${url}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>`;
+  }
 }
 
 // FORM SUBMIT
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  // Simulate form submission
-  setTimeout(() => {
-    document.getElementById('successMessage').style.display = 'block';
-    this.reset();
-  }, 1000);
+  const form = this;
+  const formData = new FormData(form);
+  
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      document.getElementById('successMessage').style.display = 'block';
+      form.reset();
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Something went wrong. Please try again.');
+  });
 });
+
+function playVideo(videoUrl) {
+  const modal = document.createElement("div");
+  modal.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  `;
+
+  modal.innerHTML = `
+    <video controls autoplay style="max-height:90vh; max-width:90vw;">
+      <source src="${videoUrl}" type="video/mp4">
+    </video>
+  `;
+
+  modal.onclick = () => modal.remove();
+  document.body.appendChild(modal);
+}
 </script>
 
 </body>
 </html>
+
+
+
