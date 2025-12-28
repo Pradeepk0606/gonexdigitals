@@ -383,7 +383,7 @@ nav a:hover::after {
     padding: 80px 20px;
   }
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
   }
   .service-card {
@@ -520,7 +520,8 @@ nav a:hover::after {
 }
 
 .why-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Ease-out */
 }
@@ -708,7 +709,8 @@ nav a:hover::after {
 }
 
 .works-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   transition: transform 0.8s ease;
 }
@@ -1100,11 +1102,10 @@ nav a:hover::after {
 .footer-content {
   max-width: 1200px;
   margin: auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  text-align: center;
-  gap: 30px;
+  gap: 40px;
   position: relative;
   z-index: 1;
 }
@@ -1192,9 +1193,13 @@ nav a:hover::after {
     min-width: 200px;
     padding: 30px 20px;
   }
-  .video-card {
-    min-width: 280px;
-    height: 180px;
+  .why-track {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .works-track {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
   }
   .works-title, .services-title, .contact-title {
     font-size: 11px;
@@ -1203,7 +1208,7 @@ nav a:hover::after {
     font-size: 16px;
   }
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
   }
   .service-card {
@@ -1244,7 +1249,7 @@ nav a:hover::after {
     padding: 40px 15px 30px;
   }
   .footer-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
     gap: 20px;
   }
@@ -1315,6 +1320,14 @@ nav a:hover::after {
   .video-card {
     min-width: 260px;
     height: 160px;
+  }
+  .works-track {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .why-track {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
   .service-card {
     padding: 20px 15px;
