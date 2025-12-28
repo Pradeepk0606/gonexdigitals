@@ -169,94 +169,140 @@ nav a:hover::after {
 /* ================= MOBILE NAVIGATION ================= */
 @media (max-width: 768px) {
   nav {
-    padding: 15px 5%;
+    padding: 20px 5%;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   nav > div:last-child {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     width: 100%;
+    padding: 10px 0;
   }
-  
+
   nav a {
     margin: 0;
-    padding: 10px 15px;
+    padding: 12px 20px;
     font-size: 16px;
     font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
   }
-  
+
+  nav a:hover {
+    color: #00c853;
+    background: rgba(0, 200, 83, 0.1);
+    transform: translateY(-2px);
+  }
+
   .hero {
-    padding: 120px 20px 60px;
+    padding: 100px 20px 50px;
   }
-  
+
   .hero h1 {
-    font-size: clamp(35px, 8vw, 60px);
+    font-size: clamp(32px, 7vw, 55px);
+    line-height: 1.2;
+    margin-bottom: 15px;
   }
-  
+
+  .hero h1 br {
+    display: block;
+    margin-bottom: 5px;
+  }
+
   .hero h2 {
     font-size: clamp(16px, 4vw, 20px);
+    margin: 15px 0 25px;
   }
-  
+
   .hero p {
     font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
   }
-  
+
   .buttons {
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    padding: 14px 24px;
+    font-size: 15px;
   }
-  
+
   .about-section, .works-section, .services-section, .contact-section, .cta-section {
-    padding: 80px 20px;
+    padding: 70px 20px;
   }
-  
+
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 20px;
   }
-  
+
   .service-card {
-    padding: 30px 20px;
+    padding: 25px 18px;
+    border-radius: 16px;
+    margin-bottom: 15px;
   }
-  
+
+  .service-card h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
   .contact-form {
     gap: 15px;
   }
-  
+
   .form-group input, .form-group textarea, .form-group select {
-    padding: 16px 18px;
+    padding: 14px 16px;
+    font-size: 15px;
   }
-  
+
   .cta-info {
     flex-direction: column;
     gap: 20px;
     text-align: center;
   }
-  
+
   .why-track, .works-track {
     display: grid;
     width: auto;
     animation: none;
   }
-  
+
   .why-track {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
   }
-  
+
   .works-track {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
+  }
+
+  .video-card {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
   }
 }
 
@@ -410,63 +456,78 @@ nav a:hover::after {
 @media (max-width: 480px) {
   nav {
     padding: 15px 5%;
-    gap: 20px;
+    gap: 18px;
   }
-  
+
   nav > div:last-child {
-    gap: 20px;
+    gap: 18px;
+    padding: 5px 0;
   }
-  
+
   nav a {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-  
-  .hero h1 {
-    font-size: 28px;
-  }
-  
-  .hero h2 {
-    font-size: 16px;
-  }
-  
-  .hero p {
-    font-size: 14px;
-  }
-  
-  .service-card {
-    padding: 20px 15px;
-  }
-  
-  .service-card h4 {
-    font-size: 16px;
-  }
-  
-  .service-card p {
-    font-size: 13px;
-  }
-  
-  .contact-form {
-    gap: 10px;
-  }
-  
-  .form-group input, .form-group textarea, .form-group select {
-    padding: 12px 14px;
-    font-size: 13px;
-  }
-  
-  .send-btn {
-    padding: 14px;
-    font-size: 14px;
-  }
-  
-  .cta-section h2 {
-    font-size: 24px;
-  }
-  
-  .footer-links a {
     padding: 8px 12px;
     font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .hero h2 {
+    font-size: 15px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    max-width: 220px;
+  }
+
+  .service-card {
+    padding: 18px 12px;
+    margin-bottom: 10px;
+  }
+
+  .service-card h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 12px;
+  }
+
+  .contact-form {
+    gap: 8px;
+  }
+
+  .form-group input, .form-group textarea, .form-group select {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .send-btn {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .cta-section h2 {
+    font-size: 22px;
+  }
+
+  .footer-links a {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .video-card {
+    height: 160px;
+    margin-bottom: 10px;
   }
 }
 
@@ -978,7 +1039,6 @@ nav a:hover::after {
 .video-card:nth-child(7) { animation-delay: 0.7s; }
 .video-card:nth-child(8) { animation-delay: 0.8s; }
 .video-card:nth-child(9) { animation-delay: 0.9s; }
-.video-card:nth-child(10) { animation-delay: 1.0s; }
 
 .video-card:hover {
   transform: translateY(-10px) scale(1.02);
@@ -1568,7 +1628,7 @@ footer {
         <!-- CARD 1 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908089/IMG_2314_oft1p4.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918049/IMG_2626_l96y3o.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1576,7 +1636,7 @@ footer {
         <!-- CARD 2 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908072/IMG_0088_zwrmqj.mp4" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918041/IMG_2048_f4olxm.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1584,7 +1644,7 @@ footer {
         <!-- CARD 3 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908069/IMG_2189_akomij.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918025/IMG_2314_skoqtk.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1592,7 +1652,7 @@ footer {
         <!-- CARD 4 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908069/IMG_3276_nf3tsb.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918020/IMG_2877_1_rrd5ao.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1600,7 +1660,7 @@ footer {
         <!-- CARD 5 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908063/IMG_2554_rwlt0t.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918005/IMG_3558_d49upb.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1608,7 +1668,7 @@ footer {
         <!-- CARD 6 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908057/IMG_3558_zyh5l6.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917991/IMG_2413_lzcqus.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1616,7 +1676,7 @@ footer {
         <!-- CARD 7 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908055/IMG_3368_sthxg6.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917983/IMG_3101_tixujb.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1624,7 +1684,7 @@ footer {
         <!-- CARD 8 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908050/IMG_3137_tiebvx.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917969/IMG_2293_wbujrz.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
@@ -1632,15 +1692,7 @@ footer {
         <!-- CARD 9 -->
         <div class="video-card">
           <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908037/IMG_2295_xjfq2t.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
-        </div>
-
-        <!-- CARD 10 -->
-        <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/f_mp4,q_auto,fps_10,du_3,w_320,h_480,c_fill/v1766908027/IMG_3101_iuc12x.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917953/IMG_2295_robu4v.mov" type="video/mp4">
           </video>
           <div class="play-btn"></div>
         </div>
