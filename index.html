@@ -138,13 +138,14 @@ nav {
 }
 
 nav a {
-  margin-left: 25px;
+  margin-left: 35px;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 15px;
   position: relative;
   transition: 0.3s;
+  letter-spacing: 0.5px;
 }
 
 nav a::after {
@@ -166,58 +167,442 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* ================= MOBILE NAVIGATION ================= */
+/* ================= COMPLETE MOBILE REDESIGN ================= */
 @media (max-width: 768px) {
+  /* MOBILE NAVIGATION - HAMBURGER STYLE */
   nav {
-    padding: 20px 5%;
-    flex-direction: column;
+    padding: 15px 20px;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 25px;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(25px);
+    border-bottom: 2px solid rgba(0, 200, 83, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
   }
 
   nav > div:last-child {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    width: 100%;
-    padding: 10px 0;
+    display: none; /* Hide desktop nav links */
   }
 
-  nav a {
-    margin: 0;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  nav a:hover {
-    color: #00c853;
+  /* HAMBURGER MENU */
+  .hamburger {
+    display: block;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
     background: rgba(0, 200, 83, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 200, 83, 0.3);
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #00c853;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(25px);
+    padding: 30px 20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border-top: 1px solid rgba(0, 200, 83, 0.2);
+    z-index: 999;
+  }
+
+  .mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .mobile-nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 25px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    letter-spacing: 1px;
+  }
+
+  .mobile-nav-links a:hover {
+    background: rgba(0, 200, 83, 0.1);
+    border-color: rgba(0, 200, 83, 0.5);
+    color: #00c853;
     transform: translateY(-2px);
   }
 
+  /* HERO SECTION MOBILE */
   .hero {
-    padding: 100px 20px 50px;
+    padding: 120px 20px 60px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero h1 {
-    font-size: clamp(32px, 7vw, 55px);
+    font-size: 36px;
     line-height: 1.2;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
   }
 
   .hero h1 br {
+    margin-bottom: 8px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+    margin: 20px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  /* ABOUT SECTION MOBILE */
+  .about-section {
+    padding: 80px 20px;
+  }
+
+  .about-title {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .why-box {
+    width: 280px;
+    flex-shrink: 0;
+    padding: 30px 20px;
+    border-radius: 16px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .why-box h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .why-box p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* SERVICES SECTION MOBILE */
+  .services-section {
+    padding: 80px 20px;
+  }
+
+  .services-title {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+
+  .services-subtitle {
+    font-size: 18px;
+    margin: 20px 0 50px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 15px 12px;
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 200, 83, 0.05);
+    border-color: rgba(0, 200, 83, 0.3);
+  }
+
+  .service-card span {
+    font-size: 26px;
+    margin-bottom: 10px;
     display: block;
-    margin-bottom: 5px;
+  }
+
+  .service-card h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  /* WORKS SECTION MOBILE */
+  .works-section {
+    padding: 80px 20px;
+  }
+
+  .works-title {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+
+  .works-subtitle {
+    font-size: 18px;
+    margin: 20px 0 50px;
+  }
+
+  .works-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .works-track {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .video-card {
+    flex: 0 0 180px;
+    height: 270px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* CONTACT SECTION MOBILE */
+  .contact-section {
+    padding: 80px 20px;
+  }
+
+  .contact-container {
+    max-width: 100%;
+  }
+
+  .contact-title {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+
+  .contact-subtitle {
+    font-size: 18px;
+    margin: 20px 0 40px;
+  }
+
+  .contact-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-info h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .send-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    background: #00c853;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .send-btn:hover {
+    background: #00a844;
+    transform: translateY(-2px);
+  }
+
+  /* CTA SECTION MOBILE */
+  .cta-section {
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .cta-info {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* FOOTER MOBILE */
+  .footer {
+    padding: 60px 20px 40px;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  /* SCROLL TO TOP */
+  .scroll-top {
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 12px;
   }
 
   .hero h2 {
@@ -284,25 +669,24 @@ nav a:hover::after {
   }
 
   .why-track, .works-track {
-    display: grid;
-    width: auto;
-    animation: none;
+    display: flex;
+    width: max-content;
+    animation: scrollLoop 30s linear infinite;
   }
 
   .why-track {
-    grid-template-columns: 1fr;
     gap: 15px;
   }
 
   .works-track {
-    grid-template-columns: 1fr;
     gap: 15px;
   }
 
   .video-card {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 15px;
+    width: 150px;
+    height: 225px;
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 }
 
@@ -313,27 +697,41 @@ nav a:hover::after {
   }
   
   nav {
-    padding: 20px 5%;
-    gap: 25px;
-  }
-  
-  nav > div:last-child {
-    gap: 25px;
+    padding: 25px 5%;
+    gap: 20px;
+    background: rgba(5, 5, 5, 0.98); /* Darker background for menu */
   }
   
   nav a {
-    padding: 12px 18px;
-    font-size: 15px;
+    padding: 10px 0;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-  
+
   .hero {
-    padding: 100px 15px 50px;
+    padding: 120px 15px 60px;
     text-align: center;
   }
   
   .hero h1 {
     font-size: 32px;
-    line-height: 1.2;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .hero h1 br {
+    display: none;
+  }
+  
+  .hero h1 span {
+    display: block;
+    margin-top: 5px;
+    font-size: 36px; /* Slightly larger for brand name */
   }
   
   .hero h2 {
@@ -348,24 +746,54 @@ nav a:hover::after {
   
   .buttons {
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
   }
   
   .btn {
-    padding: 14px 28px;
-    font-size: 14px;
+    padding: 16px 28px;
+    font-size: 15px;
+    width: 100%;
   }
   
   .about-section, .works-section, .services-section, .contact-section, .cta-section {
     padding: 60px 15px;
   }
-  
-  .about-heading {
-    font-size: 28px;
+
+  /* SMALLER SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+    gap: 10px;
   }
   
-  .about-text {
-    font-size: 16px;
+  .service-card {
+    padding: 20px 12px;
+    border-radius: 16px;
+    min-height: 180px; /* Uniform height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .service-card span {
+    font-size: 32px; /* Smaller Icon */
+    margin-bottom: 12px;
+  }
+  
+  .service-card h4 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  
+  .service-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   
   .why-box {
@@ -526,8 +954,9 @@ nav a:hover::after {
   }
 
   .video-card {
-    height: 160px;
-    margin-bottom: 10px;
+    width: 160px;
+    height: 240px;
+    margin-bottom: 0;
   }
 }
 
@@ -775,7 +1204,7 @@ nav a:hover::after {
 /* TITLES */
 .about-title {
   letter-spacing: 3px;
-  font-size: 13px;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
   margin-bottom: 10px;
@@ -991,7 +1420,7 @@ nav a:hover::after {
 .works-title {
   color: rgba(255, 255, 255, 0.6);
   letter-spacing: 3px;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -1103,7 +1532,7 @@ nav a:hover::after {
 }
 
 .services-title {
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 3px;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
@@ -1127,7 +1556,7 @@ nav a:hover::after {
   background: var(--card-dark);
   border: 1px solid var(--border-dark);
   border-radius: 24px;
-  padding: 40px 30px;
+  padding: 25px 20px;
   backdrop-filter: blur(20px);
   transition: 0.4s;
   position: relative;
@@ -1202,7 +1631,7 @@ nav a:hover::after {
 }
 
 .contact-title {
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 3px;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
@@ -1576,7 +2005,7 @@ footer {
       <span>Entrepreneurs</span>
     </div>
 
-    <h1 data-aos="fade-up" data-aos-delay="400">Grow Your Brand with <br><span>GoNex Innovations</span></h1>
+    <h1 data-aos="fade-up" data-aos-delay="400" style="letter-spacing: 1px; line-height: 1.3;">Grow Your Brand with <br><span style="letter-spacing: 2px;">GoNex Innovations</span></h1>
     
     <h2 data-aos="fade-up" data-aos-delay="600">We are <span id="typed-output" style="color: #00c853; font-weight: 700;"></span></h2>
 
@@ -1623,78 +2052,51 @@ footer {
     </p>
 
     <div class="works-wrapper">
-      <div class="works-track">
+      <div class="works-track" id="worksTrack">
 
         <!-- CARD 1 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918049/IMG_2626_l96y3o.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918049/IMG_2626_l96y3o.mov" autoplay loop muted playsinline></video>
         </div>
         
         <!-- CARD 2 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918041/IMG_2048_f4olxm.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918041/IMG_2048_f4olxm.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 3 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918025/IMG_2314_skoqtk.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918025/IMG_2314_skoqtk.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 4 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918020/IMG_2877_1_rrd5ao.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918020/IMG_2877_1_rrd5ao.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 5 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918005/IMG_3558_d49upb.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766918005/IMG_3558_d49upb.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 6 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917991/IMG_2413_lzcqus.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917991/IMG_2413_lzcqus.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 7 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917983/IMG_3101_tixujb.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917983/IMG_3101_tixujb.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 8 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917969/IMG_2293_wbujrz.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917969/IMG_2293_wbujrz.mov" autoplay loop muted playsinline></video>
         </div>
 
         <!-- CARD 9 -->
         <div class="video-card">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917953/IMG_2295_robu4v.mov" type="video/mp4">
-          </video>
-          <div class="play-btn"></div>
+          <video src="https://res.cloudinary.com/dqfwafsxk/video/upload/v1766917953/IMG_2295_robu4v.mov" autoplay loop muted playsinline></video>
         </div>
 
       </div>
@@ -2106,28 +2508,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate-line').forEach(line => {
   observer.observe(line);
 });
-
-// VIDEO PLAY
-function playVideo(card, url) {
-  if (url.includes('youtube') || url.includes('youtu.be')) {
-    // Extract Video ID to use in playlist param for looping
-    let videoId = '';
-    const parts = url.split('/');
-    videoId = parts[parts.length - 1];
-    
-    // Params: autoplay, mute, loop, no controls, playlist (for loop)
-    const params = `?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}&modestbranding=1`;
-    
-    card.innerHTML = `<iframe width="100%" height="100%" src="${url}${params}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  } else {
-    // Direct Video (Cloudinary/MP4/MOV)
-    card.innerHTML = `
-      <video width="100%" height="100%" controls autoplay style="object-fit: cover; border-radius: 24px;">
-        <source src="${url}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>`;
-  }
-}
 
 // FORM SUBMIT
 document.getElementById('contactForm').addEventListener('submit', function(e) {
