@@ -166,6 +166,27 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--white);
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
 /* ================= HERO ================= */
 .hero {
   min-height: 100vh;
@@ -355,6 +376,30 @@ nav a:hover::after {
   }
   nav a {
     margin: 0;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
   .hero {
     padding: 120px 20px 60px;
@@ -1162,6 +1207,30 @@ nav a:hover::after {
     margin-left: 15px;
     font-size: 13px;
   }
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
   .hero {
     padding: 100px 15px 50px;
     text-align: center;
@@ -1286,22 +1355,31 @@ nav a:hover::after {
 
 /* TABLET */
 @media (max-width: 768px) and (min-width: 601px) {
-  .hero {
-    padding: 120px 20px 70px;
+  nav {
+    padding: 15px 5%;
   }
-  .hero h1 {
-    font-size: clamp(40px, 7vw, 55px);
+  .logo {
+    font-size: 22px;
   }
-  .hero h2 {
-    font-size: clamp(18px, 3.5vw, 22px);
+  nav a {
+    margin-left: 20px;
+    font-size: 14px;
   }
-  .video-card {
-    width: 100%;
-    height: 220px;
+  .hamburger {
+    display: none;
   }
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .nav-links {
+    display: flex !important;
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
+    flex-direction: row;
+    padding: 0;
     gap: 25px;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    border: none;
   }
   .service-card {
     padding: 28px 20px;
@@ -1493,12 +1571,17 @@ footer {
 
 <nav>
   <div class="logo"><span class="brand-green">GoNex</span> <span class="brand-white">Innovations</span></div>
-  <div>
+  <div class="nav-links">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#works">Works</a>
     <a href="#contact">Contact</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </nav>
 
@@ -2020,6 +2103,12 @@ function scrollToContact() {
 
 function scrollToWorks() {
   document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+}
+
+// HAMBURGER MENU TOGGLE
+function toggleMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.classList.toggle('active');
 }
 
 // INFINITE LOOP SETUP
