@@ -66,40 +66,7 @@ body {
   pointer-events: none;
 }
 
-/* ================= LOADING SCREEN ================= */
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #050708, #0b1a14);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
 
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader {
-  width: 80px;
-  height: 80px;
-  border: 6px solid rgba(0, 200, 83, 0.3);
-  border-top: 6px solid #00c853;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  box-shadow: 0 0 30px rgba(0, 200, 83, 0.5);
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
 /* ================= NAVBAR ================= */
 nav {
@@ -1971,10 +1938,7 @@ footer {
 </head>
 
 <body>
-<!-- LOADING SCREEN -->
-<div class="loading-screen" id="loadingScreen">
-  <div class="loader"></div>
-</div>
+
 
 <!-- THEME TOGGLE REMOVED -->
 <!-- SCROLL TO TOP -->
@@ -2452,14 +2416,7 @@ footer {
 
       init();
       animate();
-  }
-
-  // LOADING SCREEN
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loadingScreen').classList.add('hidden');
-    }, 1000); // Reduced from 2000 to 1000 for faster loading
-  });
+  };
 
 // SCROLL TO TOP
 window.addEventListener("scroll", () => {
